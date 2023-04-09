@@ -26,7 +26,7 @@ namespace DOOR.Shared.Utils
             using (var db = new DOOROracleContext(_dbContextOptions))
             {
 
-                //lstOraTranslateMsgs = db.OraTranslateMsgs.ToList();
+                lstOraTranslateMsgs = db.OraTranslateMsgs.ToList();
             }
         }
 
@@ -37,7 +37,7 @@ namespace DOOR.Shared.Utils
             {
                 if (strMessage.ToUpper().Contains(msg.OraConstraintName.ToUpper()))
                 {
-                    //return msg.OraErrorMessage;
+                    return msg.OraErrorMessage;
                 }
             }
             return strMessage;
