@@ -40,7 +40,7 @@ namespace DOOR.Shared.Utils
                     return msg.OraErrorMessage;
                 }
             }
-            return strMessage;
+            //return strMessage;
         }
     }
 }
