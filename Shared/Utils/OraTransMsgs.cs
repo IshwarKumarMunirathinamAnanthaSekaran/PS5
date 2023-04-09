@@ -37,7 +37,7 @@ namespace DOOR.Shared.Utils
             {
                 if (strMessage.ToUpper().Contains(msg.OraConstraintName.ToUpper()))
                 {
-                    //return msg.OraErrorMessage;
+                    return msg.OraErrorMessage;
                 }
             }
             return strMessage;
