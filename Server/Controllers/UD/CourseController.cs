@@ -56,7 +56,9 @@ namespace CSBA6.Server.Controllers.app
                     Description = sp.Description,
                     ModifiedBy = sp.ModifiedBy,
                     ModifiedDate = sp.ModifiedDate,
-                    Prerequisite = sp.Prerequisite
+                    Prerequisite = sp.Prerequisite,
+                     SchoolId = sp.SchoolId,
+                       PrerequisiteSchoolId = sp.PrerequisiteSchoolId
                 }).ToListAsync();
             return Ok(lst);
         }
@@ -77,7 +79,9 @@ namespace CSBA6.Server.Controllers.app
                     Description = sp.Description,
                     ModifiedBy = sp.ModifiedBy,
                     ModifiedDate = sp.ModifiedDate,
-                    Prerequisite = sp.Prerequisite
+                    Prerequisite = sp.Prerequisite,
+                    SchoolId = sp.SchoolId,
+                    PrerequisiteSchoolId = sp.PrerequisiteSchoolId
                 }).FirstOrDefaultAsync();
             return Ok(lst);
         }

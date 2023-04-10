@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DOOR.Shared.DTO
 {
@@ -22,5 +23,11 @@ namespace DOOR.Shared.DTO
 
         public string ModifiedBy { get; set; } = null!;
         public DateTime ModifiedDate { get; set; }
+        
+        [Precision(8)]
+        public int SchoolId { get; set; }
+        [Column("PREREQUISITE_SCHOOL_ID")]
+        [Precision(8)]
+        public int? PrerequisiteSchoolId { get; set; }
     }
 }
