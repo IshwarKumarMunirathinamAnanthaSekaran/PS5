@@ -112,10 +112,10 @@ namespace DOOR.Server.Controllers.UD
                         GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence,
                         NumericGrade = _GradeDTO.NumericGrade,
                         Comments = _GradeDTO.Comments,
-                        CreatedBy = _GradeDTO.CreatedBy,
-                        CreatedDate = _GradeDTO.CreatedDate,
-                        ModifiedBy = _GradeDTO.ModifiedBy,
-                        ModifiedDate = _GradeDTO.ModifiedDate
+                        //CreatedBy = _GradeDTO.CreatedBy,
+                        //CreatedDate = _GradeDTO.CreatedDate,
+                        //ModifiedBy = _GradeDTO.ModifiedBy,
+                        //ModifiedDate = _GradeDTO.ModifiedDate
 
                     };
                     _context.Grades.Add(c);
@@ -158,10 +158,10 @@ namespace DOOR.Server.Controllers.UD
                     c.GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence;
                     c.NumericGrade = _GradeDTO.NumericGrade;
                     c.Comments = _GradeDTO.Comments;
-                    c.CreatedBy = _GradeDTO.CreatedBy;
-                    c.CreatedDate = _GradeDTO.CreatedDate;
-                    c.ModifiedBy = _GradeDTO.ModifiedBy;
-                    c.ModifiedDate = _GradeDTO.ModifiedDate;
+                    //c.CreatedBy = _GradeDTO.CreatedBy;
+                    //c.CreatedDate = _GradeDTO.CreatedDate;
+                    //c.ModifiedBy = _GradeDTO.ModifiedBy;
+                    //c.ModifiedDate = _GradeDTO.ModifiedDate;
 
                     _context.Grades.Update(c);
                     await _context.SaveChangesAsync();

@@ -112,10 +112,10 @@ namespace DOOR.Server.Controllers.UD
                         Location = _SectionDTO.Location,
                         InstructorId = _SectionDTO.InstructorId,
                         Capacity = _SectionDTO.Capacity,
-                        CreatedBy = _SectionDTO.CreatedBy,
-                        CreatedDate = _SectionDTO.CreatedDate,
-                        ModifiedBy = _SectionDTO.ModifiedBy,
-                        ModifiedDate = _SectionDTO.ModifiedDate,
+                        //CreatedBy = _SectionDTO.CreatedBy,
+                        //CreatedDate = _SectionDTO.CreatedDate,
+                        //ModifiedBy = _SectionDTO.ModifiedBy,
+                        //ModifiedDate = _SectionDTO.ModifiedDate,
                         SchoolId = _SectionDTO.SchoolId
 
                     };
@@ -159,10 +159,10 @@ namespace DOOR.Server.Controllers.UD
                     c.Location = _SectionDTO.Location;
                     c.InstructorId = _SectionDTO.InstructorId;
                     c.Capacity = _SectionDTO.Capacity;
-                    c.CreatedBy = _SectionDTO.CreatedBy;
-                    c.CreatedDate = _SectionDTO.CreatedDate;
-                    c.ModifiedBy = _SectionDTO.ModifiedBy;
-                    c.ModifiedDate = _SectionDTO.ModifiedDate;
+                    //c.CreatedBy = _SectionDTO.CreatedBy;
+                    //c.CreatedDate = _SectionDTO.CreatedDate;
+                    //c.ModifiedBy = _SectionDTO.ModifiedBy;
+                    //c.ModifiedDate = _SectionDTO.ModifiedDate;
                     c.SchoolId = _SectionDTO.SchoolId;
 
                     _context.Sections.Update(c);

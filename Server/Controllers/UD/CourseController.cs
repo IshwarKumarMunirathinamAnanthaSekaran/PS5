@@ -101,20 +101,23 @@ namespace CSBA6.Server.Controllers.app
 
                 if (c == null)
                 {
+                    
                     c = new Course
                     {
                        
                         Cost = _CourseDTO.Cost,
                         CourseNo = _CourseDTO.CourseNo,
-                        CreatedBy = _CourseDTO.CreatedBy,
-                        CreatedDate = _CourseDTO.CreatedDate,
+                        //CreatedBy = _CourseDTO.CreatedBy,
+                        //CreatedDate = _CourseDTO.CreatedDate,
                         Description = _CourseDTO.Description,
-                        ModifiedBy = _CourseDTO.ModifiedBy,
-                        ModifiedDate = _CourseDTO.ModifiedDate,
+                        //ModifiedBy = _CourseDTO.ModifiedBy,
+                        //ModifiedDate = _CourseDTO.ModifiedDate,
                         Prerequisite = _CourseDTO.Prerequisite,
                         SchoolId = _CourseDTO.SchoolId,
                         PrerequisiteSchoolId = _CourseDTO.PrerequisiteSchoolId
                     };
+
+
                     _context.Courses.Add(c);
                     await _context.SaveChangesAsync();
                 }
@@ -156,11 +159,11 @@ namespace CSBA6.Server.Controllers.app
                 {
                         c.Cost = _CourseDTO.Cost;
                      c.CourseNo = _CourseDTO.CourseNo;
-                    c.CreatedBy = _CourseDTO.CreatedBy;
-                    c.CreatedDate = _CourseDTO.CreatedDate;
+                    //c.CreatedBy = _CourseDTO.CreatedBy;
+                    //c.CreatedDate = _CourseDTO.CreatedDate;
                     c.Description = _CourseDTO.Description;
-                    c.ModifiedBy = _CourseDTO.ModifiedBy;
-                    c.ModifiedDate = _CourseDTO.ModifiedDate;
+                    //c.ModifiedBy = _CourseDTO.ModifiedBy;
+                    //c.ModifiedDate = _CourseDTO.ModifiedDate;
                     c.Prerequisite = _CourseDTO.Prerequisite;
                     c.SchoolId = _CourseDTO.SchoolId;
                     c.PrerequisiteSchoolId = _CourseDTO.PrerequisiteSchoolId;

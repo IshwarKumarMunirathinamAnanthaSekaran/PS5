@@ -101,10 +101,10 @@ namespace DOOR.Server.Controllers.UD
                         SchoolId = _GradeTypeDTO.SchoolId,
                         GradeTypeCode = _GradeTypeDTO.GradeTypeCode,
                         Description = _GradeTypeDTO.Description,
-                        CreatedBy = _GradeTypeDTO.CreatedBy,
-                        CreatedDate = _GradeTypeDTO.CreatedDate,
-                        ModifiedBy = _GradeTypeDTO.ModifiedBy,
-                        ModifiedDate = _GradeTypeDTO.ModifiedDate
+                        //CreatedBy = _GradeTypeDTO.CreatedBy,
+                        //CreatedDate = _GradeTypeDTO.CreatedDate,
+                        //ModifiedBy = _GradeTypeDTO.ModifiedBy,
+                        //ModifiedDate = _GradeTypeDTO.ModifiedDate
 
                     };
                     _context.GradeTypes.Add(c);
@@ -143,10 +143,10 @@ namespace DOOR.Server.Controllers.UD
                     c.SchoolId = _GradeTypeDTO.SchoolId;
                     c.GradeTypeCode = _GradeTypeDTO.GradeTypeCode;
                     c.Description = _GradeTypeDTO.Description;
-                    c.CreatedBy = _GradeTypeDTO.CreatedBy;
-                    c.CreatedDate = _GradeTypeDTO.CreatedDate;
-                    c.ModifiedBy = _GradeTypeDTO.ModifiedBy;
-                    c.ModifiedDate = _GradeTypeDTO.ModifiedDate;
+                    //c.CreatedBy = _GradeTypeDTO.CreatedBy;
+                    //c.CreatedDate = _GradeTypeDTO.CreatedDate;
+                    //c.ModifiedBy = _GradeTypeDTO.ModifiedBy;
+                    //c.ModifiedDate = _GradeTypeDTO.ModifiedDate;
 
 
                     _context.GradeTypes.Update(c);

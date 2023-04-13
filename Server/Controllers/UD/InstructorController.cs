@@ -113,10 +113,10 @@ namespace DOOR.Server.Controllers.UD
                         StreetAddress = _InstructorDTO.StreetAddress,
                         Zip = _InstructorDTO.Zip,
                         Phone = _InstructorDTO.Phone,
-                        CreatedBy = _InstructorDTO.CreatedBy,
-                        CreatedDate = _InstructorDTO.CreatedDate,
-                        ModifiedBy = _InstructorDTO.ModifiedBy,
-                        ModifiedDate = _InstructorDTO.ModifiedDate
+                        //CreatedBy = _InstructorDTO.CreatedBy,
+                        //CreatedDate = _InstructorDTO.CreatedDate,
+                        //ModifiedBy = _InstructorDTO.ModifiedBy,
+                        //ModifiedDate = _InstructorDTO.ModifiedDate
 
                     };
                     _context.Instructors.Add(c);
@@ -160,10 +160,10 @@ namespace DOOR.Server.Controllers.UD
                     c.StreetAddress = _InstructorDTO.StreetAddress;
                     c.Zip = _InstructorDTO.Zip;
                     c.Phone = _InstructorDTO.Phone;
-                    c.CreatedBy = _InstructorDTO.CreatedBy;
-                    c.CreatedDate = _InstructorDTO.CreatedDate;
-                    c.ModifiedBy = _InstructorDTO.ModifiedBy;
-                    c.ModifiedDate = _InstructorDTO.ModifiedDate;
+                    //c.CreatedBy = _InstructorDTO.CreatedBy;
+                    //c.CreatedDate = _InstructorDTO.CreatedDate;
+                    //c.ModifiedBy = _InstructorDTO.ModifiedBy;
+                    //c.ModifiedDate = _InstructorDTO.ModifiedDate;
 
                     _context.Instructors.Update(c);
                     await _context.SaveChangesAsync();

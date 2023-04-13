@@ -106,10 +106,10 @@ namespace DOOR.Server.Controllers.UD
                         NumberPerSection = _GradeTypeWeightDTO.NumberPerSection,
                         PercentOfFinalGrade = _GradeTypeWeightDTO.PercentOfFinalGrade,
                         DropLowest = _GradeTypeWeightDTO.DropLowest,
-                        CreatedBy = _GradeTypeWeightDTO.CreatedBy,
-                        CreatedDate = _GradeTypeWeightDTO.CreatedDate,
-                        ModifiedBy = _GradeTypeWeightDTO.ModifiedBy,
-                        ModifiedDate = _GradeTypeWeightDTO.ModifiedDate
+                        //CreatedBy = _GradeTypeWeightDTO.CreatedBy,
+                        //CreatedDate = _GradeTypeWeightDTO.CreatedDate,
+                        //ModifiedBy = _GradeTypeWeightDTO.ModifiedBy,
+                        //ModifiedDate = _GradeTypeWeightDTO.ModifiedDate
 
                     };
                     _context.GradeTypeWeights.Add(c);
@@ -152,10 +152,10 @@ namespace DOOR.Server.Controllers.UD
                     c.NumberPerSection = _GradeTypeWeightDTO.NumberPerSection;
                     c.PercentOfFinalGrade = _GradeTypeWeightDTO.PercentOfFinalGrade;
                     c.DropLowest = _GradeTypeWeightDTO.DropLowest;
-                    c.CreatedBy = _GradeTypeWeightDTO.CreatedBy;
-                    c.CreatedDate = _GradeTypeWeightDTO.CreatedDate;
-                    c.ModifiedBy = _GradeTypeWeightDTO.ModifiedBy;
-                    c.ModifiedDate = _GradeTypeWeightDTO.ModifiedDate;
+                    //c.CreatedBy = _GradeTypeWeightDTO.CreatedBy;
+                    //c.CreatedDate = _GradeTypeWeightDTO.CreatedDate;
+                    //c.ModifiedBy = _GradeTypeWeightDTO.ModifiedBy;
+                    //c.ModifiedDate = _GradeTypeWeightDTO.ModifiedDate;
 
                     _context.GradeTypeWeights.Update(c);
                     await _context.SaveChangesAsync();

@@ -91,10 +91,10 @@ namespace DOOR.Server.Controllers.UD
 
                         SchoolId = _SchoolDTO.SchoolId,
                         SchoolName = _SchoolDTO.SchoolName,
-                        CreatedBy = _SchoolDTO.CreatedBy,
-                        CreatedDate = _SchoolDTO.CreatedDate,
-                        ModifiedBy = _SchoolDTO.ModifiedBy,
-                        ModifiedDate = _SchoolDTO.ModifiedDate
+                        //CreatedBy = _SchoolDTO.CreatedBy,
+                        //CreatedDate = _SchoolDTO.CreatedDate,
+                        //ModifiedBy = _SchoolDTO.ModifiedBy,
+                        //ModifiedDate = _SchoolDTO.ModifiedDate
                     };
                     _context.Schools.Add(c);
                     await _context.SaveChangesAsync();
@@ -131,10 +131,10 @@ namespace DOOR.Server.Controllers.UD
                     
                     c.SchoolId = _SchoolDTO.SchoolId;
                     c.SchoolName = _SchoolDTO.SchoolName;
-                    c.CreatedBy = _SchoolDTO.CreatedBy;
-                    c.CreatedDate = _SchoolDTO.CreatedDate;
-                    c.ModifiedBy = _SchoolDTO.ModifiedBy;
-                    c.ModifiedDate = _SchoolDTO.ModifiedDate;
+                    //c.CreatedBy = _SchoolDTO.CreatedBy;
+                    //c.CreatedDate = _SchoolDTO.CreatedDate;
+                    //c.ModifiedBy = _SchoolDTO.ModifiedBy;
+                    //c.ModifiedDate = _SchoolDTO.ModifiedDate;
 
                     _context.Schools.Update(c);
                     await _context.SaveChangesAsync();

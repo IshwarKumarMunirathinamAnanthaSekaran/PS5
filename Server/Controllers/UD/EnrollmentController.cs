@@ -102,10 +102,10 @@ namespace DOOR.Server.Controllers.UD
                         SectionId = _EnrollmentDTO.SectionId,
                         EnrollDate = _EnrollmentDTO.EnrollDate,
                         FinalGrade = _EnrollmentDTO.FinalGrade,
-                        CreatedBy = _EnrollmentDTO.CreatedBy,
-                        CreatedDate = _EnrollmentDTO.CreatedDate,
-                        ModifiedBy = _EnrollmentDTO.ModifiedBy,
-                        ModifiedDate = _EnrollmentDTO.ModifiedDate,
+                        //CreatedBy = _EnrollmentDTO.CreatedBy,
+                        //CreatedDate = _EnrollmentDTO.CreatedDate,
+                        //ModifiedBy = _EnrollmentDTO.ModifiedBy,
+                        //ModifiedDate = _EnrollmentDTO.ModifiedDate,
                         SchoolId = _EnrollmentDTO.SchoolId
 
                     };
@@ -146,10 +146,10 @@ namespace DOOR.Server.Controllers.UD
                     c.SectionId = _EnrollmentDTO.SectionId;
                     c.EnrollDate = _EnrollmentDTO.EnrollDate;
                     c.FinalGrade = _EnrollmentDTO.FinalGrade;
-                    c.CreatedBy = _EnrollmentDTO.CreatedBy;
-                    c.CreatedDate = _EnrollmentDTO.CreatedDate;
-                    c.ModifiedBy = _EnrollmentDTO.ModifiedBy;
-                    c.ModifiedDate = _EnrollmentDTO.ModifiedDate;
+                    //c.CreatedBy = _EnrollmentDTO.CreatedBy;
+                    //c.CreatedDate = _EnrollmentDTO.CreatedDate;
+                    //c.ModifiedBy = _EnrollmentDTO.ModifiedBy;
+                    //c.ModifiedDate = _EnrollmentDTO.ModifiedDate;
                     c.SchoolId = _EnrollmentDTO.SchoolId;
 
                     _context.Enrollments.Update(c);

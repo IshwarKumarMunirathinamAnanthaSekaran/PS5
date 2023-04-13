@@ -99,10 +99,10 @@ namespace DOOR.Server.Controllers.UD
                         GradePoint = _GradeConversionDTO.GradePoint,
                         MaxGrade = _GradeConversionDTO.MaxGrade,
                         MinGrade = _GradeConversionDTO.MinGrade,
-                        CreatedBy = _GradeConversionDTO.CreatedBy,
-                        CreatedDate = _GradeConversionDTO.CreatedDate,
-                        ModifiedBy = _GradeConversionDTO.ModifiedBy,
-                        ModifiedDate = _GradeConversionDTO.ModifiedDate
+                        //CreatedBy = _GradeConversionDTO.CreatedBy,
+                        //CreatedDate = _GradeConversionDTO.CreatedDate,
+                        //ModifiedBy = _GradeConversionDTO.ModifiedBy,
+                        //ModifiedDate = _GradeConversionDTO.ModifiedDate
 
                     };
                     _context.GradeConversions.Add(c);
@@ -143,10 +143,10 @@ namespace DOOR.Server.Controllers.UD
                     c.GradePoint = _GradeConversionDTO.GradePoint;
                     c.MaxGrade = _GradeConversionDTO.MaxGrade;
                     c.MinGrade = _GradeConversionDTO.MinGrade;
-                    c.CreatedBy = _GradeConversionDTO.CreatedBy;
-                    c.CreatedDate = _GradeConversionDTO.CreatedDate;
-                    c.ModifiedBy = _GradeConversionDTO.ModifiedBy;
-                    c.ModifiedDate = _GradeConversionDTO.ModifiedDate;
+                    //c.CreatedBy = _GradeConversionDTO.CreatedBy;
+                    //c.CreatedDate = _GradeConversionDTO.CreatedDate;
+                    //c.ModifiedBy = _GradeConversionDTO.ModifiedBy;
+                    //c.ModifiedDate = _GradeConversionDTO.ModifiedDate;
 
                     _context.GradeConversions.Update(c);
                     await _context.SaveChangesAsync();

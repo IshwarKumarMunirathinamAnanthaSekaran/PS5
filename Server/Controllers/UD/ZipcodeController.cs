@@ -98,10 +98,10 @@ namespace DOOR.Server.Controllers.UD
                         Zip = _ZipcodeDTO.Zip,
                         City = _ZipcodeDTO.City,
                         State = _ZipcodeDTO.State,
-                        CreatedBy = _ZipcodeDTO.CreatedBy,
-                        CreatedDate = _ZipcodeDTO.CreatedDate,
-                        ModifiedBy = _ZipcodeDTO.ModifiedBy,
-                        ModifiedDate = _ZipcodeDTO.ModifiedDate
+                        //CreatedBy = _ZipcodeDTO.CreatedBy,
+                        //CreatedDate = _ZipcodeDTO.CreatedDate,
+                        //ModifiedBy = _ZipcodeDTO.ModifiedBy,
+                        //ModifiedDate = _ZipcodeDTO.ModifiedDate
                     };
 
                     _context.Zipcodes.Add(c);
@@ -141,10 +141,10 @@ namespace DOOR.Server.Controllers.UD
                     c.Zip = _ZipcodeDTO.Zip;
                     c.City = _ZipcodeDTO.City;
                     c.State = _ZipcodeDTO.State;
-                    c.CreatedBy = _ZipcodeDTO.CreatedBy;
-                    c.CreatedDate = _ZipcodeDTO.CreatedDate;
-                    c.ModifiedBy = _ZipcodeDTO.ModifiedBy;
-                    c.ModifiedDate = _ZipcodeDTO.ModifiedDate;
+                    //c.CreatedBy = _ZipcodeDTO.CreatedBy;
+                    //c.CreatedDate = _ZipcodeDTO.CreatedDate;
+                    //c.ModifiedBy = _ZipcodeDTO.ModifiedBy;
+                    //c.ModifiedDate = _ZipcodeDTO.ModifiedDate;
 
                     _context.Zipcodes.Update(c);
                     await _context.SaveChangesAsync();

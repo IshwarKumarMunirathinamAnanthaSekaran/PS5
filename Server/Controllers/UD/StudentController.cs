@@ -116,10 +116,10 @@ namespace DOOR.Server.Controllers.UD
                         Phone = _StudentDTO.Phone,
                         Employer = _StudentDTO.Employer,
                         RegistrationDate = _StudentDTO.RegistrationDate,
-                        CreatedBy = _StudentDTO.CreatedBy,
-                        CreatedDate = _StudentDTO.CreatedDate,
-                        ModifiedBy = _StudentDTO.ModifiedBy,
-                        ModifiedDate = _StudentDTO.ModifiedDate,
+                        //CreatedBy = _StudentDTO.CreatedBy,
+                        //CreatedDate = _StudentDTO.CreatedDate,
+                        //ModifiedBy = _StudentDTO.ModifiedBy,
+                        //ModifiedDate = _StudentDTO.ModifiedDate,
                         SchoolId = _StudentDTO.SchoolId
 
                     };
@@ -164,10 +164,10 @@ namespace DOOR.Server.Controllers.UD
                     c.Phone = _StudentDTO.Phone;
                     c.Employer = _StudentDTO.Employer;
                     c.RegistrationDate = _StudentDTO.RegistrationDate;
-                    c.CreatedBy = _StudentDTO.CreatedBy;
-                    c.CreatedDate = _StudentDTO.CreatedDate;
-                    c.ModifiedBy = _StudentDTO.ModifiedBy;
-                    c.ModifiedDate = _StudentDTO.ModifiedDate;
+                    //c.CreatedBy = _StudentDTO.CreatedBy;
+                    //c.CreatedDate = _StudentDTO.CreatedDate;
+                    //c.ModifiedBy = _StudentDTO.ModifiedBy;
+                    //c.ModifiedDate = _StudentDTO.ModifiedDate;
                     c.SchoolId = _StudentDTO.SchoolId;
 
                     _context.Students.Update(c);
