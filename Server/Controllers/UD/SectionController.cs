@@ -68,10 +68,11 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpGet]
-        [Route("GetSection/{_SectionID}")]
-        public async Task<IActionResult> GetSection(int _SectionID)
+        [Route("GetSection/{_SectionID}/{_SchoolID}")]
+        public async Task<IActionResult> GetSection(int _SectionID, int _SchoolID)
         {
             SectionDTO? lst = await _context.Sections
+                .Where(x => x.SectionId == _SectionID && x.SchoolId == _SchoolID)
                 .Select(sp => new SectionDTO
                 {
                     SectionId = sp.SectionId,
@@ -97,7 +98,7 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId).FirstOrDefaultAsync();
+                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId && x.SchoolId == _SectionDTO.SchoolId).FirstOrDefaultAsync();
 
                 if (c == null)
                 {
@@ -146,7 +147,7 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId).FirstOrDefaultAsync();
+                Section c = await _context.Sections.Where(x => x.SectionId == _SectionDTO.SectionId && x.SchoolId == _SectionDTO.SchoolId).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
@@ -187,12 +188,12 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpDelete]
-        [Route("DeleteSection/{_SectionID}")]
-        public async Task<IActionResult> DeleteSection(int _SectionID)
+        [Route("DeleteSection/{_SectionID}/{_SchoolID}")]
+        public async Task<IActionResult> DeleteSection(int _SectionID, int _SchoolID)
         {
             try
             {
-                Section c = await _context.Sections.Where(x => x.SectionId == _SectionID).FirstOrDefaultAsync();
+                Section c = await _context.Sections.Where(x => x.SectionId == _SectionID && x.SchoolId == _SchoolID).FirstOrDefaultAsync();
 
                 if (c != null)
                 {

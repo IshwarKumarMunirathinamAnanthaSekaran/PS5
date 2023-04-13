@@ -32,84 +32,93 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace DOOR.Server.Controllers.UD
 {
+
     [ApiController]
     [Route("api/[controller]")]
-    public class EnrollmentController : BaseController
+    public class GradeController: BaseController
 	{
-        public EnrollmentController(DOOROracleContext _DBcontext,
-            OraTransMsgs _OraTransMsgs)
-            : base(_DBcontext, _OraTransMsgs)
+        public GradeController(DOOROracleContext _DBcontext,
+    OraTransMsgs _OraTransMsgs)
+    : base(_DBcontext, _OraTransMsgs)
 
         {
         }
 
         [HttpGet]
-        [Route("GetEnrollment")]
-        public async Task<IActionResult> GetEnrollment()
+        [Route("GetGrade")]
+        public async Task<IActionResult> GetGrade()
         {
-            List<EnrollmentDTO> lst = await _context.Enrollments
-                .Select(sp => new EnrollmentDTO
+            List<GradeDTO> lst = await _context.Grades
+                .Select(sp => new GradeDTO
                 {
+                    SchoolId = sp.SchoolId,
                     StudentId = sp.StudentId,
                     SectionId = sp.SectionId,
-                    EnrollDate = sp.EnrollDate,
-                    FinalGrade = sp.FinalGrade,
-                    CreatedBy = sp.CreatedBy,
-                    CreatedDate = sp.CreatedDate,
-                    ModifiedBy = sp.ModifiedBy,
-                    ModifiedDate = sp.ModifiedDate,
-                    SchoolId = sp.SchoolId
+                    GradeTypeCode = sp.GradeTypeCode,
+                    GradeCodeOccurrence = sp.GradeCodeOccurrence,
+                    NumericGrade = sp.NumericGrade,
+                    Comments = sp.Comments,
+                     CreatedBy = sp.CreatedBy,
+                       CreatedDate =sp.CreatedDate,
+                       ModifiedBy = sp.ModifiedBy,
+                       ModifiedDate = sp.ModifiedDate
+                     
                 }).ToListAsync();
             return Ok(lst);
         }
 
         [HttpGet]
-        [Route("GetEnrollment/{_StudentID}/{_SectionID}/{_SchoolID}")]
-        public async Task<IActionResult> GetEnrollment(int _StudentID, int _SectionID, int _SchoolID)
-        {
-            EnrollmentDTO? lst = await _context.Enrollments
-                .Where(x => x.StudentId == _StudentID && x.SectionId == _SectionID && x.SchoolId == _SchoolID)
-                .Select(sp => new EnrollmentDTO
+        [Route("GetGrade/{_SchoolID}/{_StudentID}/{_SectionID}/{_GradeTypeCode}/{_GradeCodeOccurrence}")]
+        public async Task<IActionResult> GetGrade(int _SchoolID, int _StudentID,int _SectionID, String _GradeTypeCode, int _GradeCodeOccurrence)
+        { 
+            GradeDTO? lst = await _context.Grades
+                .Where(x => x.SchoolId == _SchoolID && x.StudentId == _StudentID && x.SectionId == _SectionID && x.GradeTypeCode == _GradeTypeCode && x.GradeCodeOccurrence == _GradeCodeOccurrence)
+                .Select(sp => new GradeDTO
                 {
+                    SchoolId = sp.SchoolId,
                     StudentId = sp.StudentId,
                     SectionId = sp.SectionId,
-                    EnrollDate = sp.EnrollDate,
-                    FinalGrade = sp.FinalGrade,
+                    GradeTypeCode = sp.GradeTypeCode,
+                    GradeCodeOccurrence = sp.GradeCodeOccurrence,
+                    NumericGrade = sp.NumericGrade,
+                    Comments = sp.Comments,
                     CreatedBy = sp.CreatedBy,
                     CreatedDate = sp.CreatedDate,
                     ModifiedBy = sp.ModifiedBy,
-                    ModifiedDate = sp.ModifiedDate,
-                    SchoolId = sp.SchoolId
+                    ModifiedDate = sp.ModifiedDate
+
                 }).FirstOrDefaultAsync();
             return Ok(lst);
         }
 
         [HttpPost]
-        [Route("PostEnrollment")]
-        public async Task<IActionResult> PostEnrollment([FromBody] EnrollmentDTO _EnrollmentDTO)
+        [Route("PostGrade")]
+        public async Task<IActionResult> PostGrade([FromBody] GradeDTO _GradeDTO)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _EnrollmentDTO.StudentId && x.SectionId == _EnrollmentDTO.SectionId && x.SchoolId == _EnrollmentDTO.SchoolId).FirstOrDefaultAsync();
+                Grade c = await _context.Grades.Where(x => x.SchoolId == _GradeDTO.SchoolId && x.StudentId == _GradeDTO.StudentId && x.SectionId == _GradeDTO.SectionId && x.GradeTypeCode == _GradeDTO.GradeTypeCode && x.GradeCodeOccurrence == _GradeDTO.GradeCodeOccurrence).FirstOrDefaultAsync();
 
                 if (c == null)
                 {
-                    c = new Enrollment
+                    c = new Grade
                     {
 
                         
-                        StudentId = _EnrollmentDTO.StudentId,
-                        SectionId = _EnrollmentDTO.SectionId,
-                        EnrollDate = _EnrollmentDTO.EnrollDate,
-                        FinalGrade = _EnrollmentDTO.FinalGrade,
-                        CreatedBy = _EnrollmentDTO.CreatedBy,
-                        CreatedDate = _EnrollmentDTO.CreatedDate,
-                        ModifiedBy = _EnrollmentDTO.ModifiedBy,
-                        ModifiedDate = _EnrollmentDTO.ModifiedDate,
-                        SchoolId = _EnrollmentDTO.SchoolId
+                        SchoolId = _GradeDTO.SchoolId,
+                        StudentId = _GradeDTO.StudentId,
+                        SectionId = _GradeDTO.SectionId,
+                        GradeTypeCode = _GradeDTO.GradeTypeCode,
+                        GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence,
+                        NumericGrade = _GradeDTO.NumericGrade,
+                        Comments = _GradeDTO.Comments,
+                        CreatedBy = _GradeDTO.CreatedBy,
+                        CreatedDate = _GradeDTO.CreatedDate,
+                        ModifiedBy = _GradeDTO.ModifiedBy,
+                        ModifiedDate = _GradeDTO.ModifiedDate
 
                     };
-                    _context.Enrollments.Add(c);
+                    _context.Grades.Add(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -132,27 +141,29 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpPut]
-        [Route("PutEnrollment")]
-        public async Task<IActionResult> PutCourse([FromBody] EnrollmentDTO _EnrollmentDTO)
+        [Route("PutGrade")]
+        public async Task<IActionResult> PutGrade([FromBody] GradeDTO _GradeDTO)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _EnrollmentDTO.StudentId && x.SectionId == _EnrollmentDTO.SectionId && x.SchoolId == _EnrollmentDTO.SchoolId).FirstOrDefaultAsync();
+                Grade c = await _context.Grades.Where(x => x.SchoolId == _GradeDTO.SchoolId && x.StudentId == _GradeDTO.StudentId && x.SectionId == _GradeDTO.SectionId && x.GradeTypeCode == _GradeDTO.GradeTypeCode && x.GradeCodeOccurrence == _GradeDTO.GradeCodeOccurrence).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                   
-                    c.StudentId = _EnrollmentDTO.StudentId;
-                    c.SectionId = _EnrollmentDTO.SectionId;
-                    c.EnrollDate = _EnrollmentDTO.EnrollDate;
-                    c.FinalGrade = _EnrollmentDTO.FinalGrade;
-                    c.CreatedBy = _EnrollmentDTO.CreatedBy;
-                    c.CreatedDate = _EnrollmentDTO.CreatedDate;
-                    c.ModifiedBy = _EnrollmentDTO.ModifiedBy;
-                    c.ModifiedDate = _EnrollmentDTO.ModifiedDate;
-                    c.SchoolId = _EnrollmentDTO.SchoolId;
 
-                    _context.Enrollments.Update(c);
+                    c.SchoolId = _GradeDTO.SchoolId;
+                    c.StudentId = _GradeDTO.StudentId;
+                    c.SectionId = _GradeDTO.SectionId;
+                    c.GradeTypeCode = _GradeDTO.GradeTypeCode;
+                    c.GradeCodeOccurrence = _GradeDTO.GradeCodeOccurrence;
+                    c.NumericGrade = _GradeDTO.NumericGrade;
+                    c.Comments = _GradeDTO.Comments;
+                    c.CreatedBy = _GradeDTO.CreatedBy;
+                    c.CreatedDate = _GradeDTO.CreatedDate;
+                    c.ModifiedBy = _GradeDTO.ModifiedBy;
+                    c.ModifiedDate = _GradeDTO.ModifiedDate;
+
+                    _context.Grades.Update(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -175,16 +186,16 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpDelete]
-        [Route("DeleteEnrollment/{_StudentID}/{_SectionID}/{_SchoolID}")]
-        public async Task<IActionResult> DeleteCourse(int _StudentID, int _SectionID, int _SchoolID)
+        [Route("DeleteGrade/{_SchoolID}/{_StudentID}/{_SectionID}/{_GradeTypeCode}/{_GradeCodeOccurrence}")]
+        public async Task<IActionResult> DeleteGrade(int _SchoolID, int _StudentID, int _SectionID, String _GradeTypeCode, int _GradeCodeOccurrence)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _StudentID && x.SectionId == _SectionID && x.SchoolId == _SchoolID).FirstOrDefaultAsync();
+                Grade c = await _context.Grades.Where(x => x.SchoolId == _SchoolID && x.StudentId == _StudentID && x.SectionId == _SectionID && x.GradeTypeCode == _GradeTypeCode && x.GradeCodeOccurrence == _GradeCodeOccurrence).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                    _context.Enrollments.Remove(c);
+                    _context.Grades.Remove(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -205,6 +216,9 @@ namespace DOOR.Server.Controllers.UD
 
             return Ok();
         }
+
+
+
     }
-}
+}    
 

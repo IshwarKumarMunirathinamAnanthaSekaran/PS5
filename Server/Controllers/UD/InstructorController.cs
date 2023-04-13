@@ -96,7 +96,7 @@ namespace DOOR.Server.Controllers.UD
         {
             try
             {
-               Instructor c = await _context.Instructors.Where(x => x.SchoolId == _InstructorDTO.InstructorId && x.InstructorId == _InstructorDTO.InstructorId).FirstOrDefaultAsync();
+               Instructor c = await _context.Instructors.Where(x => x.SchoolId == _InstructorDTO.SchoolId && x.InstructorId == _InstructorDTO.InstructorId).FirstOrDefaultAsync();
 
                 if (c == null)
                 {

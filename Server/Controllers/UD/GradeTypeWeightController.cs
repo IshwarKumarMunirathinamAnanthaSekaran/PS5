@@ -34,82 +34,85 @@ namespace DOOR.Server.Controllers.UD
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class EnrollmentController : BaseController
+    public class GradeTypeWeightController: BaseController
 	{
-        public EnrollmentController(DOOROracleContext _DBcontext,
-            OraTransMsgs _OraTransMsgs)
-            : base(_DBcontext, _OraTransMsgs)
+        public GradeTypeWeightController(DOOROracleContext _DBcontext,
+    OraTransMsgs _OraTransMsgs)
+    : base(_DBcontext, _OraTransMsgs)
 
         {
         }
 
         [HttpGet]
-        [Route("GetEnrollment")]
-        public async Task<IActionResult> GetEnrollment()
+        [Route("GetGradeTypeWeight")]
+        public async Task<IActionResult> GetGradeTypeWeight()
         {
-            List<EnrollmentDTO> lst = await _context.Enrollments
-                .Select(sp => new EnrollmentDTO
+            List<GradeTypeWeightDTO> lst = await _context.GradeTypeWeights
+                .Select(sp => new GradeTypeWeightDTO
                 {
-                    StudentId = sp.StudentId,
+                    SchoolId = sp.SchoolId,
                     SectionId = sp.SectionId,
-                    EnrollDate = sp.EnrollDate,
-                    FinalGrade = sp.FinalGrade,
+                    GradeTypeCode = sp.GradeTypeCode,
+                    NumberPerSection = sp.NumberPerSection,
+                    PercentOfFinalGrade = sp.PercentOfFinalGrade,
+                    DropLowest = sp.DropLowest,
                     CreatedBy = sp.CreatedBy,
                     CreatedDate = sp.CreatedDate,
                     ModifiedBy = sp.ModifiedBy,
-                    ModifiedDate = sp.ModifiedDate,
-                    SchoolId = sp.SchoolId
+                    ModifiedDate = sp.ModifiedDate
                 }).ToListAsync();
             return Ok(lst);
         }
 
         [HttpGet]
-        [Route("GetEnrollment/{_StudentID}/{_SectionID}/{_SchoolID}")]
-        public async Task<IActionResult> GetEnrollment(int _StudentID, int _SectionID, int _SchoolID)
+        [Route("GetGradeTypeWeight/{_SchoolID}/{_SectionID}/{_GradeTypeCode}")]
+        public async Task<IActionResult> GetGradeTypeWeight(int _SchoolID, int _SectionID, String _GradeTypeCode)
         {
-            EnrollmentDTO? lst = await _context.Enrollments
-                .Where(x => x.StudentId == _StudentID && x.SectionId == _SectionID && x.SchoolId == _SchoolID)
-                .Select(sp => new EnrollmentDTO
+            GradeTypeWeightDTO? lst = await _context.GradeTypeWeights
+                .Where(x => x.SchoolId == _SchoolID && x.SectionId == _SectionID && x.GradeTypeCode == _GradeTypeCode)
+                .Select(sp => new GradeTypeWeightDTO
                 {
-                    StudentId = sp.StudentId,
+                    SchoolId = sp.SchoolId,
                     SectionId = sp.SectionId,
-                    EnrollDate = sp.EnrollDate,
-                    FinalGrade = sp.FinalGrade,
+                    GradeTypeCode = sp.GradeTypeCode,
+                    NumberPerSection = sp.NumberPerSection,
+                    PercentOfFinalGrade = sp.PercentOfFinalGrade,
+                    DropLowest = sp.DropLowest,
                     CreatedBy = sp.CreatedBy,
                     CreatedDate = sp.CreatedDate,
                     ModifiedBy = sp.ModifiedBy,
-                    ModifiedDate = sp.ModifiedDate,
-                    SchoolId = sp.SchoolId
+                    ModifiedDate = sp.ModifiedDate
                 }).FirstOrDefaultAsync();
             return Ok(lst);
         }
 
         [HttpPost]
-        [Route("PostEnrollment")]
-        public async Task<IActionResult> PostEnrollment([FromBody] EnrollmentDTO _EnrollmentDTO)
+        [Route("PostGradeTypeWeight")]
+        public async Task<IActionResult> PostGradeTypeWeight([FromBody] GradeTypeWeightDTO _GradeTypeWeightDTO)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _EnrollmentDTO.StudentId && x.SectionId == _EnrollmentDTO.SectionId && x.SchoolId == _EnrollmentDTO.SchoolId).FirstOrDefaultAsync();
+                GradeTypeWeight c = await _context.GradeTypeWeights.Where(x => x.SchoolId == _GradeTypeWeightDTO.SchoolId && x.SectionId == _GradeTypeWeightDTO.SectionId && x.GradeTypeCode == _GradeTypeWeightDTO.GradeTypeCode).FirstOrDefaultAsync();
 
                 if (c == null)
                 {
-                    c = new Enrollment
+                    c = new GradeTypeWeight
                     {
 
                         
-                        StudentId = _EnrollmentDTO.StudentId,
-                        SectionId = _EnrollmentDTO.SectionId,
-                        EnrollDate = _EnrollmentDTO.EnrollDate,
-                        FinalGrade = _EnrollmentDTO.FinalGrade,
-                        CreatedBy = _EnrollmentDTO.CreatedBy,
-                        CreatedDate = _EnrollmentDTO.CreatedDate,
-                        ModifiedBy = _EnrollmentDTO.ModifiedBy,
-                        ModifiedDate = _EnrollmentDTO.ModifiedDate,
-                        SchoolId = _EnrollmentDTO.SchoolId
+                        SchoolId = _GradeTypeWeightDTO.SchoolId,
+                        SectionId = _GradeTypeWeightDTO.SectionId,
+                        GradeTypeCode = _GradeTypeWeightDTO.GradeTypeCode,
+                        NumberPerSection = _GradeTypeWeightDTO.NumberPerSection,
+                        PercentOfFinalGrade = _GradeTypeWeightDTO.PercentOfFinalGrade,
+                        DropLowest = _GradeTypeWeightDTO.DropLowest,
+                        CreatedBy = _GradeTypeWeightDTO.CreatedBy,
+                        CreatedDate = _GradeTypeWeightDTO.CreatedDate,
+                        ModifiedBy = _GradeTypeWeightDTO.ModifiedBy,
+                        ModifiedDate = _GradeTypeWeightDTO.ModifiedDate
 
                     };
-                    _context.Enrollments.Add(c);
+                    _context.GradeTypeWeights.Add(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -131,28 +134,30 @@ namespace DOOR.Server.Controllers.UD
             return Ok();
         }
 
+
         [HttpPut]
-        [Route("PutEnrollment")]
-        public async Task<IActionResult> PutCourse([FromBody] EnrollmentDTO _EnrollmentDTO)
+        [Route("PutGradeTypeWeight")]
+        public async Task<IActionResult> PutGradeTypeWeight([FromBody] GradeTypeWeightDTO _GradeTypeWeightDTO)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _EnrollmentDTO.StudentId && x.SectionId == _EnrollmentDTO.SectionId && x.SchoolId == _EnrollmentDTO.SchoolId).FirstOrDefaultAsync();
+               GradeTypeWeight c = await _context.GradeTypeWeights.Where(x => x.SchoolId == _GradeTypeWeightDTO.SchoolId && x.SectionId == _GradeTypeWeightDTO.SectionId && x.GradeTypeCode == _GradeTypeWeightDTO.GradeTypeCode).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                   
-                    c.StudentId = _EnrollmentDTO.StudentId;
-                    c.SectionId = _EnrollmentDTO.SectionId;
-                    c.EnrollDate = _EnrollmentDTO.EnrollDate;
-                    c.FinalGrade = _EnrollmentDTO.FinalGrade;
-                    c.CreatedBy = _EnrollmentDTO.CreatedBy;
-                    c.CreatedDate = _EnrollmentDTO.CreatedDate;
-                    c.ModifiedBy = _EnrollmentDTO.ModifiedBy;
-                    c.ModifiedDate = _EnrollmentDTO.ModifiedDate;
-                    c.SchoolId = _EnrollmentDTO.SchoolId;
 
-                    _context.Enrollments.Update(c);
+                    c.SchoolId = _GradeTypeWeightDTO.SchoolId;
+                    c.SectionId = _GradeTypeWeightDTO.SectionId;
+                    c.GradeTypeCode = _GradeTypeWeightDTO.GradeTypeCode;
+                    c.NumberPerSection = _GradeTypeWeightDTO.NumberPerSection;
+                    c.PercentOfFinalGrade = _GradeTypeWeightDTO.PercentOfFinalGrade;
+                    c.DropLowest = _GradeTypeWeightDTO.DropLowest;
+                    c.CreatedBy = _GradeTypeWeightDTO.CreatedBy;
+                    c.CreatedDate = _GradeTypeWeightDTO.CreatedDate;
+                    c.ModifiedBy = _GradeTypeWeightDTO.ModifiedBy;
+                    c.ModifiedDate = _GradeTypeWeightDTO.ModifiedDate;
+
+                    _context.GradeTypeWeights.Update(c);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -175,16 +180,16 @@ namespace DOOR.Server.Controllers.UD
         }
 
         [HttpDelete]
-        [Route("DeleteEnrollment/{_StudentID}/{_SectionID}/{_SchoolID}")]
-        public async Task<IActionResult> DeleteCourse(int _StudentID, int _SectionID, int _SchoolID)
+        [Route("DeleteGradeTypeWeight/{_SchoolID}/{_SectionID}/{_GradeTypeCode}")]
+        public async Task<IActionResult> DeleteGradeTypeWeight(int _SchoolID, int _SectionID, String _GradeTypeCode)
         {
             try
             {
-                Enrollment c = await _context.Enrollments.Where(x => x.StudentId == _StudentID && x.SectionId == _SectionID && x.SchoolId == _SchoolID).FirstOrDefaultAsync();
+                GradeTypeWeight c = await _context.GradeTypeWeights.Where(x => x.SchoolId == _SchoolID && x.SectionId == _SectionID && x.GradeTypeCode == _GradeTypeCode).FirstOrDefaultAsync();
 
                 if (c != null)
                 {
-                    _context.Enrollments.Remove(c);
+                    _context.GradeTypeWeights.Remove(c);
                     await _context.SaveChangesAsync();
                 }
             }
